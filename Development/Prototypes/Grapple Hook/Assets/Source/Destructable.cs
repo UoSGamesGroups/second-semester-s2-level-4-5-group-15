@@ -1,16 +1,29 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
+
+public enum Faction { NEUTRAL, PINK, PURPLE };
 
 public class Destructable : MonoBehaviour
 {
-    public bool destroyObjects;
-    public float destroyTime;
+    private readonly Color32 clrPink = new Color32(255, 0, 255, 255);
+    private readonly Color32 clrPurple = new Color32(155, 0, 255, 255);
+    private readonly Color32 clrNeutral = new Color32(255, 255, 255, 255);
 
-    public float minForce;
-    public float maxForce;
+    private const int DEFAULT_VALUE = 1000;
 
-    private bool destroyed;
+    [SerializeField]
+    private int objectValue = DEFAULT_VALUE;
+
+    [SerializeField]
+    private Faction faction;
+
+    [SerializeField]
+    private float minForce;
+
+    [SerializeField]
+    private float maxForce;
+
+    private bool active;
 
     /// <summary>
     /// Returns a list containing the GameObject's children
@@ -37,54 +50,82 @@ public class Destructable : MonoBehaviour
         rb.AddForce(new Vector2(Random.Range(min, max), Random.Range(min, max)), forceMode);
     }
 
-    /// <summary>
-    /// Destroys a GameObject and all of its children after the given time has passed
-    /// </summary>
-    /// <param name="pause">The time to wait before destroying (in seconds)</param>
-    /// <returns></returns>
-    private IEnumerator destroyAfter(float pause)
-    {
-        yield return new WaitForSeconds(pause);
-        foreach (var child in getChildren())
-        {
-            Destroy(child);
-        }
-        Destroy(gameObject);
-    }
-
     private void Start()
     {
+        // Assign our Faction's preset colour 
+        var colour = clrNeutral;
+        switch (faction)
+        {
+            case Faction.PINK:
+                colour = clrPink;
+                break;
+            case Faction.PURPLE:
+                colour = clrPurple;
+                break;
+        }
+
         foreach (var child in getChildren())
         {
+            // Set all child SpriteRenderer's colour to our Faction's colour
+            if(child.GetComponent<SpriteRenderer>() != null)
+            {
+                child.GetComponent<SpriteRenderer>().color = colour;
+            }
+
+            // Set all child Rigidbody2D's to be kinematic 
             if (child.GetComponent<Rigidbody2D>() != null)
             {
-                // Set all child Rigidbody2D's to be kinematic 
                 child.GetComponent<Rigidbody2D>().isKinematic = true;
             }
         }
+
+        // Flag ourselves as active
+        active = true;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (destroyed || !collision.gameObject.CompareTag("Player"))
+        // If we are flagged inactive or the collision was not tagged "Player" then discontinue
+        if (!active || !collision.gameObject.CompareTag("Player"))
+        {
             return;
+        }
 
+        // If the Player is not a member of our Faction and we are not Neutral then discontinue
+        var playerFaction = collision.GetComponent<PlayerScore>().getFaction();
+        if (playerFaction != faction && faction != Faction.NEUTRAL) {
+            return;
+        }
+
+        // Set all child Rigidbody2D's to be non kinematic and apply a random force to them
         foreach (var child in getChildren())
         {
             var rb = child.GetComponent<Rigidbody2D>();
             if (rb == null) continue;
 
-            // Set all child Rigidbody2D's to be non kinematic and apply a random force to them
             rb.isKinematic = false;
             addRandomForce(ref rb, minForce, maxForce, ForceMode2D.Impulse);         
         }
+    }
 
-        if (destroyObjects)
-        {
-            StartCoroutine(destroyAfter(destroyTime));
-        }
+    public int getValue()
+    {
+        return objectValue;
+    }
 
-        destroyed = true;
+    public Faction getFaction()
+    {
+        return faction;
+    }
+
+    public bool isActive()
+    {
+        return active;
+    }
+
+    public void setActive(bool state)
+    {
+        active = state;
     }
 }
 
