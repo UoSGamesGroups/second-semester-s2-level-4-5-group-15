@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour
     public GrapplingHook grapplingHook;
     public Crosshair crosshair;
 
+    private bool sliding;
+
     /// <summary>
     /// Returns a Vector3 containing the current coordinate position of the mouse
     /// </summary>
@@ -30,5 +32,31 @@ public class PlayerController : MonoBehaviour
         {
             grapplingHook.detatch();
         }
+
+        GetComponent<Animator>().SetBool("sliding", sliding);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        sliding = collision.gameObject.CompareTag("Slide");
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (!collision.gameObject.CompareTag("Slide"))
+        {
+            return;
+        }
+
+        sliding = collision.gameObject.CompareTag("Slide");
+        var velocity = GetComponent<Rigidbody2D>().velocity;
+        GetComponent<SpriteRenderer>().flipX = velocity.x < 0.0f;
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        sliding = false;
+        GetComponent<SpriteRenderer>().flipX = false;
+    }
+
 }

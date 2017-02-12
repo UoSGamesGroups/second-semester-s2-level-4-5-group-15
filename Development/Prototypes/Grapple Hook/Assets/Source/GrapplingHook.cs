@@ -20,7 +20,11 @@ public class GrapplingHook : MonoBehaviour
         distanceJoint.autoConfigureDistance = false;
         distanceJoint.maxDistanceOnly = true;
         distanceJoint.enableCollision = true;
-   
+
+        lineRenderer.startWidth = transform.localScale.x;
+        lineRenderer.endWidth = transform.localScale.x;
+
+
         // Disable the distance joint and line renderer
         distanceJoint.enabled = false;
         lineRenderer.enabled = false;
@@ -37,14 +41,23 @@ public class GrapplingHook : MonoBehaviour
         var rayHit = Physics2D.Raycast(origin, target, maxRayDistance, layerMask);
 
         // If the Ray hit nothing, or its target did not have a tag found in grappleableTags then discontinue here
-        if (rayHit.collider == null || !grappleableTags.Contains(rayHit.transform.tag)) return;
+        if (rayHit.collider == null || !grappleableTags.Contains(rayHit.transform.tag))
+        {
+            return;
+        }
+
+        // If the target has no Rigidbody2D then discontinue
+        if (!rayHit.collider.gameObject.GetComponent<Rigidbody2D>())
+        {
+            return;
+        }
 
         // Connect to the target and enable the distance joint
         distanceJoint.connectedBody = rayHit.collider.gameObject.GetComponent<Rigidbody2D>();
         distanceJoint.connectedAnchor = distanceJoint.connectedBody.transform.InverseTransformPoint(rayHit.point);
         distanceJoint.enabled = true;
 
-        // Update the line renders position, material scale and then enable it
+        // Update the line renders position, material scale and then enable it  
         lineRenderer.SetPosition(0, origin);
         lineRenderer.SetPosition(1, rayHit.point);
         lineRenderer.material.mainTextureScale = new Vector2(Vector3.Distance(origin, rayHit.point), 5.0f);
