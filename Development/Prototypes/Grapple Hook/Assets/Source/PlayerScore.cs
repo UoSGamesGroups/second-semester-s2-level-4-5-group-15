@@ -9,6 +9,7 @@ public class PlayerScore : MonoBehaviour
 
     private const int MULTIPLIER_MAX = 5;
     private const int MULTIPLIER_MIN = 1;
+    [SerializeField]
     private int multiplier = MULTIPLIER_MIN;
 
     private Timer timer;
@@ -16,6 +17,7 @@ public class PlayerScore : MonoBehaviour
     [SerializeField]
     private Faction faction;
 
+    [SerializeField]
     private int score;
 
     private void Start()
@@ -85,6 +87,11 @@ public class PlayerScore : MonoBehaviour
     public Faction getFaction()
     {
         return faction;
+    }
+
+    public int getMultiplier()
+    {
+        return multiplier;
     }
 
 }

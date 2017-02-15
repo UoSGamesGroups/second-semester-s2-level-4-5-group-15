@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 
 public class Timer
 {
@@ -25,6 +26,11 @@ public class Timer
     public void reset()
     {
         lastTick = Time.realtimeSinceStartup;
+    }
+
+    public int getTimeLeft()
+    {
+        return Convert.ToInt32(interval - Time.realtimeSinceStartup - lastTick);
     }
 
 }
