@@ -24,6 +24,7 @@ public class Destructable : MonoBehaviour
     private float maxForce;
 
     private bool active;
+    private bool destroyed;
 
     /// <summary>
     /// Returns a list containing the GameObject's children
@@ -50,27 +51,50 @@ public class Destructable : MonoBehaviour
         rb.AddForce(new Vector2(Random.Range(min, max), Random.Range(min, max)), forceMode);
     }
 
-    private void Start()
+    public void setFaction(Faction faction)
     {
-        // Assign our Faction's preset colour 
         var colour = clrNeutral;
-        switch (faction)
-        {
+        switch (faction) {
             case Faction.PINK:
+                this.faction = Faction.PINK;
                 colour = clrPink;
                 break;
             case Faction.PURPLE:
+                this.faction = Faction.PURPLE;
                 colour = clrPurple;
                 break;
         }
-
         foreach (var child in getChildren())
         {
             // Set all child SpriteRenderer's colour to our Faction's colour
-            if(child.GetComponent<SpriteRenderer>() != null)
+            if (child.GetComponent<SpriteRenderer>() != null)
             {
                 child.GetComponent<SpriteRenderer>().color = colour;
             }
+        }
+    }
+
+    private void Start()
+    {
+        //// Assign our Faction's preset colour 
+        //var colour = clrNeutral;
+        //switch (faction)
+        //{
+        //    case Faction.PINK:
+        //        colour = clrPink;
+        //        break;
+        //    case Faction.PURPLE:
+        //        colour = clrPurple;
+        //        break;
+        //}
+
+        foreach (var child in getChildren())
+        {
+            //// Set all child SpriteRenderer's colour to our Faction's colour
+            //if(child.GetComponent<SpriteRenderer>() != null)
+            //{
+            //    child.GetComponent<SpriteRenderer>().color = colour;
+            //}
 
             // Set all child Rigidbody2D's to be kinematic 
             if (child.GetComponent<Rigidbody2D>() != null)
@@ -86,7 +110,7 @@ public class Destructable : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // If we are flagged inactive or the collision was not tagged "Player" then discontinue
-        if (!active || !collision.gameObject.CompareTag("Player"))
+        if (destroyed || !collision.gameObject.CompareTag("Player"))
         {
             return;
         }
@@ -106,6 +130,8 @@ public class Destructable : MonoBehaviour
             rb.isKinematic = false;
             addRandomForce(ref rb, minForce, maxForce, ForceMode2D.Impulse);         
         }
+
+        destroyed = true;
     }
 
     public int getValue()
@@ -121,6 +147,11 @@ public class Destructable : MonoBehaviour
     public bool isActive()
     {
         return active;
+    }
+
+    public bool isDestroyed()
+    {
+        return destroyed;
     }
 
     public void setActive(bool state)

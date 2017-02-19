@@ -15,7 +15,7 @@ public class Timer
     public Timer(float interval)
     {
         this.interval = interval;
-        lastTick = Time.realtimeSinceStartup;
+        reset();
     }
 
     public bool hasElapsed()
@@ -26,11 +26,12 @@ public class Timer
     public void reset()
     {
         lastTick = Time.realtimeSinceStartup;
+        //Debug.Log("LT: " + lastTick);
     }
 
-    public int getTimeLeft()
+    public float getTimeLeft()
     {
-        return Convert.ToInt32(interval - Time.realtimeSinceStartup - lastTick);
+        return interval - (Time.realtimeSinceStartup - lastTick);
     }
 
 }
