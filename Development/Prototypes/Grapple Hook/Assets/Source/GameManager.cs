@@ -66,9 +66,14 @@ public class GameManager : MonoBehaviour
         txtRoundTime.text = tmrGameTime.getTimeLeft().ToString("00");
     }
 
+    private bool ObjectsAreActive()
+    {
+        return activeObjects.Any(o => !o.GetComponent<Destructable>().isDestroyed());
+    }
+
     private void Update()
     {
-        if (!tmrGameTime.hasElapsed()) return;
+        if (!tmrGameTime.hasElapsed() && ObjectsAreActive()) return;
 
         int pink_score = playerPink.GetComponent<PlayerScore>().getScore();
         int purple_score = playerPurple.GetComponent<PlayerScore>().getScore();
