@@ -3,68 +3,121 @@
 public class GameState : MonoBehaviour
 {
 
-    private static GameState instance;
+    private static GameState instance_;
 
-    private int roundsLeft;
+    private int rounds_left_;
 
-    private Faction winner;
-    private int pinkScore;
-    private int purpleScore;
+    private Faction winner_;
+    private int pink_score_;
+    private int purple_score_;
 
-    public GameState getInstance()
+    private int pink_rounds_won_;
+    private int pink_rounds_won_prev_;
+
+    private int purple_rounds_won_;
+    private int purple_rounds_won_prev_;
+
+    public void set_pink_score(int score)
     {
-        return instance;
+        pink_score_ = score;
     }
 
-    public void setRoundsLeft(int rounds)
+    public void set_purple_score(int score)
     {
-        roundsLeft = rounds;
+        purple_score_ = score;
     }
 
-    public int getRoundsLeft()
+    public void set_round_winner(Faction faction)
     {
-        return roundsLeft;
+        pink_rounds_won_prev_ = pink_rounds_won_;
+        purple_rounds_won_prev_ = purple_rounds_won_;
+        switch (faction)
+        {
+            case Faction.PINK:
+                pink_rounds_won_++;
+                break;
+            case Faction.PURPLE:
+                purple_rounds_won_++;
+                break;
+        }
     }
 
-    public int getPinkScore()
+    public int pink_rounds_won_prev()
     {
-        return pinkScore;
+        return pink_rounds_won_prev_;
     }
 
-    public int getPurpleScore()
+    public int purple_rounds_won_prev()
     {
-        return purpleScore;
+        return purple_rounds_won_prev_;
     }
 
-    public Faction getWinner()
+    public int pink_rounds_won()
     {
-        return winner;
+        return pink_rounds_won_;
     }
 
-    public void setWinnner(Faction faction, int pinkScore, int purpleScore)
+    public int purple_rounds_won()
     {
-        winner = faction;
-        this.pinkScore = pinkScore;
-        this.purpleScore = purpleScore;
+        return purple_rounds_won_;
     }
 
-    private void reset()
+    public GameState get_instance()
     {
-        pinkScore = 0;
-        purpleScore = 0;
-        roundsLeft = 0;
-        winner = Faction.NEUTRAL;
+        return instance_;
+    }
+
+    public void set_rounds_left(int rounds)
+    {
+        rounds_left_ = rounds;
+    }
+
+    public int rounds_left()
+    {
+        return rounds_left_;
+    }
+
+    public int pink_score()
+    {
+        return pink_score_;
+    }
+
+    public int purple_score()
+    {
+        return purple_score_;
+    }
+
+    public Faction winner()
+    {
+        return winner_;
+    }
+
+    public void set_winnner(Faction faction)
+    {
+        winner_ = faction;
+    }
+
+    public void reset()
+    {
+        pink_score_ = 0;
+        purple_score_ = 0;
+        rounds_left_ = 0;
+        pink_rounds_won_ = 0;
+        pink_rounds_won_prev_ = 0;
+        purple_rounds_won_ = 0;
+        purple_rounds_won_prev_ = 0;
+        winner_ = Faction.NEUTRAL;
     }
 
     private void Awake()
     {
-        if (instance == null)
+        if (instance_ == null)
         {
             DontDestroyOnLoad(gameObject);
             reset();
-            instance = this;
+            instance_ = this;
         }
-        else if (instance != this)
+        else if (instance_ != this)
         {
             Destroy(gameObject);
         }
@@ -72,6 +125,6 @@ public class GameState : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(roundsLeft);
+        Debug.Log(rounds_left_);
     }
 }

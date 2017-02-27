@@ -1,39 +1,81 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class WinScreen : MonoBehaviour
 {
 
-    [SerializeField]
-    private Text txtWinner;
+    [SerializeField] private Text txt_winner_;
+    [SerializeField] private Text txt_winner_score_;
+    [SerializeField] private Text txt_loser_score_;
 
-    [SerializeField]
-    private Image imgLoser;
 
-    [SerializeField]
-    private Image imgWinner;
+    [SerializeField] private Image img_loser_;
+    [SerializeField] private Image img_winner_;
 
-    [SerializeField]
-    private Sprite sprPink;
+    [SerializeField] private Sprite spr_pink_;
+    [SerializeField] private Sprite spr_purple_;
 
-    [SerializeField]
-    private Sprite sprPurple;
+    [SerializeField] private float time_before_next_game_;
+
+    private GameState game_state_;
 
     private void Start()
     {
-        var gameState = GameObject.Find("GameState").GetComponent<GameState>();
+        if (!GameObject.Find("GameState"))
+        {
+            Debug.Log("Error: Failed to find global state.");
+            #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+            #else
+            Application.Quit();
+            #endif
+        }
 
-        int pinkScore = gameState.getPinkScore();
-        int purpleScore = gameState.getPurpleScore();
+        game_state_ = GameObject.Find("GameState").GetComponent<GameState>();
 
-        Faction winner = gameState.getWinner();
+        int pink_score = game_state_.pink_score();
+        int purple_score = game_state_.purple_score();
 
-        imgLoser.sprite = winner == Faction.PINK ? sprPurple : sprPink;
-        imgWinner.sprite = winner == Faction.PINK ? sprPink : sprPurple;
+        var winner = game_state_.winner();
 
+        switch (winner)
+        {
+            case Faction.PINK:
+                txt_winner_score_.text = pink_score.ToString();
+                txt_winner_score_.color = new Color32(255, 0, 255, 255);
+                txt_loser_score_.text = purple_score.ToString();
+                txt_loser_score_.color = new Color32(138, 43, 226, 255);
+                txt_winner_.text = "Pink Wins!";
+                img_winner_.sprite = spr_pink_;
+                img_loser_.sprite = spr_purple_;
+                break;
+            case Faction.PURPLE:
+                txt_winner_score_.text = purple_score.ToString();
+                txt_winner_score_.color = new Color32(138, 43, 226, 255);
+                txt_loser_score_.text = pink_score.ToString();
+                txt_loser_score_.color = new Color32(255, 0, 255, 255);
+                txt_winner_.text = "Purple Wins!";
+                img_winner_.sprite = spr_purple_;
+                img_loser_.sprite = spr_pink_;
+                break;
+            case Faction.NEUTRAL:
+                txt_winner_score_.enabled = false;
+                txt_loser_score_.enabled = false;
+                img_winner_.enabled = false;
+                img_loser_.enabled = false;
+                txt_winner_.text = "Draw!";
+                break;
+        }
 
-        txtWinner.text = (winner == Faction.PINK ? "Pink" : "Purple") + " wins!";
+        StartCoroutine(TransitionToMenu(time_before_next_game_));
     }
 
+    private IEnumerator TransitionToMenu(float wait_time)
+    {
+        yield return new WaitForSeconds(wait_time);
+        SceneManager.LoadScene("Main Menu", LoadSceneMode.Single);
+    }
 
 }

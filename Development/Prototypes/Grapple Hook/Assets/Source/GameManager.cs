@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject playerPurple;
 
-    private const int ROUND_LENGTH = 30;
+    private const int ROUND_LENGTH = 5;
 
     private Vector3 pinkSpawn;
     private Vector3 purpleSpawn;
@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
     {
         pinkSpawn = playerPink.transform.position;
         purpleSpawn = playerPurple.transform.position;
-        gameState = GameObject.Find("GameState").GetComponent<GameState>().getInstance();
+        gameState = GameObject.Find("GameState").GetComponent<GameState>().get_instance();
         tmrGameTime = new Timer(ROUND_LENGTH);
         resetMatch();
     }
@@ -70,19 +70,26 @@ public class GameManager : MonoBehaviour
     {
         if (!tmrGameTime.hasElapsed()) return;
 
-        if (gameState.getRoundsLeft() > 1)
+        int pink_score = playerPink.GetComponent<PlayerScore>().getScore();
+        int purple_score = playerPurple.GetComponent<PlayerScore>().getScore();
+
+        gameState.set_pink_score(gameState.pink_score() + pink_score);
+        gameState.set_purple_score(gameState.purple_score() + purple_score);
+
+        if (pink_score > purple_score)
         {
-            gameState.setRoundsLeft(gameState.getRoundsLeft() - 1);
-            resetMatch();
+            gameState.set_round_winner(Faction.PINK);
+        }
+        else if (purple_score > pink_score)
+        {
+            gameState.set_round_winner(Faction.PURPLE);
         }
         else
         {
-            int pinkScore = playerPink.GetComponent<PlayerScore>().getScore();
-            int purpleScore = playerPurple.GetComponent<PlayerScore>().getScore();
-            Faction winner = pinkScore > purpleScore ? Faction.PINK : Faction.PURPLE;
-            gameState.setWinnner(winner, pinkScore, purpleScore);
-            SceneManager.LoadScene("Win Screen", LoadSceneMode.Single);
+            gameState.set_round_winner(Faction.NEUTRAL);
         }
+
+        SceneManager.LoadScene("Round End", LoadSceneMode.Single);     
     }
 
     private void destroyObjects()
