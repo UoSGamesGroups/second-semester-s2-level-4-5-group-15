@@ -5,8 +5,8 @@ public enum Faction { NEUTRAL, PINK, PURPLE };
 
 public class Destructable : MonoBehaviour
 {
-    private readonly Color32 clrPink = new Color32(255, 0, 255, 255);
-    private readonly Color32 clrPurple = new Color32(155, 0, 255, 255);
+	private readonly Color32 clrPink = new Color32 (255, 0, 0, 255);//new Color32(255, 0, 255, 255);
+	private readonly Color32 clrPurple = new Color32 (0, 0, 255, 255);//new Color32(155, 0, 255, 255);
     private readonly Color32 clrNeutral = new Color32(255, 255, 255, 255);
 
     private const int DEFAULT_VALUE = 1000;
@@ -76,26 +76,8 @@ public class Destructable : MonoBehaviour
 
     private void Start()
     {
-        //// Assign our Faction's preset colour 
-        //var colour = clrNeutral;
-        //switch (faction)
-        //{
-        //    case Faction.PINK:
-        //        colour = clrPink;
-        //        break;
-        //    case Faction.PURPLE:
-        //        colour = clrPurple;
-        //        break;
-        //}
-
         foreach (var child in getChildren())
         {
-            //// Set all child SpriteRenderer's colour to our Faction's colour
-            //if(child.GetComponent<SpriteRenderer>() != null)
-            //{
-            //    child.GetComponent<SpriteRenderer>().color = colour;
-            //}
-
             // Set all child Rigidbody2D's to be kinematic 
             if (child.GetComponent<Rigidbody2D>() != null)
             {

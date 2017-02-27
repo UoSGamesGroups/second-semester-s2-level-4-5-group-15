@@ -1,0 +1,468 @@
+fileFormatVersion: 2
+guid: 6b8ef7344065bda4da777b8acdbeca29
+timeCreated: 1488206528
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: TumblerGlass_0
+    21300002: TumblerGlass_1
+    21300004: TumblerGlass_2
+    21300006: TumblerGlass_3
+    21300008: TumblerGlass_4
+    21300010: TumblerGlass_5
+    21300012: TumblerGlass_6
+    21300014: TumblerGlass_7
+    21300016: TumblerGlass_8
+    21300018: TumblerGlass_9
+    21300020: TumblerGlass_10
+    21300022: TumblerGlass_11
+    21300024: TumblerGlass_12
+    21300026: TumblerGlass_13
+    21300028: TumblerGlass_14
+    21300030: TumblerGlass_15
+    21300032: TumblerGlass_16
+    21300034: TumblerGlass_17
+    21300036: TumblerGlass_18
+    21300038: TumblerGlass_19
+    21300040: TumblerGlass_20
+    21300042: TumblerGlass_21
+    21300044: TumblerGlass_22
+    21300046: TumblerGlass_23
+    21300048: TumblerGlass_24
+    21300050: TumblerGlass_25
+    21300052: TumblerGlass_26
+    21300054: TumblerGlass_27
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: TumblerGlass_0
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 903
+        width: 371
+        height: 866
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: TumblerGlass_1
+      rect:
+        serializedVersion: 2
+        x: 629
+        y: 1680
+        width: 57
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: TumblerGlass_2
+      rect:
+        serializedVersion: 2
+        x: 888
+        y: 1603
+        width: 166
+        height: 145
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: TumblerGlass_3
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 1616
+        width: 141
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: TumblerGlass_4
+      rect:
+        serializedVersion: 2
+        x: 1389
+        y: 1647
+        width: 130
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: TumblerGlass_5
+      rect:
+        serializedVersion: 2
+        x: 1588
+        y: 1627
+        width: 109
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: TumblerGlass_6
+      rect:
+        serializedVersion: 2
+        x: 627
+        y: 1409
+        width: 67
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: TumblerGlass_7
+      rect:
+        serializedVersion: 2
+        x: 846
+        y: 1410
+        width: 174
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: TumblerGlass_8
+      rect:
+        serializedVersion: 2
+        x: 1147
+        y: 1459
+        width: 83
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: TumblerGlass_9
+      rect:
+        serializedVersion: 2
+        x: 1371
+        y: 1440
+        width: 133
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: TumblerGlass_10
+      rect:
+        serializedVersion: 2
+        x: 1609
+        y: 1413
+        width: 84
+        height: 165
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: TumblerGlass_11
+      rect:
+        serializedVersion: 2
+        x: 620
+        y: 1180
+        width: 101
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: TumblerGlass_12
+      rect:
+        serializedVersion: 2
+        x: 852
+        y: 1238
+        width: 191
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: TumblerGlass_13
+      rect:
+        serializedVersion: 2
+        x: 1138
+        y: 1228
+        width: 126
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: TumblerGlass_14
+      rect:
+        serializedVersion: 2
+        x: 1469
+        y: 1101
+        width: 177
+        height: 178
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: TumblerGlass_15
+      rect:
+        serializedVersion: 2
+        x: 602
+        y: 936
+        width: 227
+        height: 109
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: TumblerGlass_16
+      rect:
+        serializedVersion: 2
+        x: 1012
+        y: 938
+        width: 152
+        height: 131
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: TumblerGlass_17
+      rect:
+        serializedVersion: 2
+        x: 1519
+        y: 771
+        width: 75
+        height: 247
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: TumblerGlass_18
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 633
+        width: 131
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: TumblerGlass_19
+      rect:
+        serializedVersion: 2
+        x: 513
+        y: 525
+        width: 150
+        height: 277
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: TumblerGlass_20
+      rect:
+        serializedVersion: 2
+        x: 963
+        y: 717
+        width: 215
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: TumblerGlass_21
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 407
+        width: 117
+        height: 129
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: TumblerGlass_22
+      rect:
+        serializedVersion: 2
+        x: 804
+        y: 343
+        width: 142
+        height: 221
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: TumblerGlass_23
+      rect:
+        serializedVersion: 2
+        x: 1216
+        y: 388
+        width: 156
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: TumblerGlass_24
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 111
+        width: 143
+        height: 221
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: TumblerGlass_25
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 75
+        width: 194
+        height: 184
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: TumblerGlass_26
+      rect:
+        serializedVersion: 2
+        x: 891
+        y: 52
+        width: 240
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: TumblerGlass_27
+      rect:
+        serializedVersion: 2
+        x: 1462
+        y: 77
+        width: 184
+        height: 187
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

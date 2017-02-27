@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject playerPurple;
 
-    private const int ROUND_LENGTH = 30;
+    private const int ROUND_LENGTH = 3000;
 
     private Vector3 pinkSpawn;
     private Vector3 purpleSpawn;
