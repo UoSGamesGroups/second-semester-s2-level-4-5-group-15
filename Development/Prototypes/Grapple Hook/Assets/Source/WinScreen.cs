@@ -9,10 +9,12 @@ public class WinScreen : MonoBehaviour
     [SerializeField] private Text txt_winner_;
     [SerializeField] private Text txt_winner_score_;
     [SerializeField] private Text txt_loser_score_;
-
+    [SerializeField] private Text txt_winner_rounds_;
+    [SerializeField] private Text txt_loser_rounds_;
 
     [SerializeField] private Image img_loser_;
     [SerializeField] private Image img_winner_;
+    [SerializeField] private Image img_podium_;
 
     [SerializeField] private Sprite spr_pink_;
     [SerializeField] private Sprite spr_purple_;
@@ -38,6 +40,9 @@ public class WinScreen : MonoBehaviour
         int pink_score = game_state_.pink_score();
         int purple_score = game_state_.purple_score();
 
+        int pink_rounds_won = game_state_.pink_rounds_won();
+        int purple_rounds_won = game_state_.purple_rounds_won();
+
         var winner = game_state_.winner();
 
         switch (winner)
@@ -48,6 +53,8 @@ public class WinScreen : MonoBehaviour
                 txt_loser_score_.text = purple_score.ToString();
                 txt_loser_score_.color = new Color32(138, 43, 226, 255);
                 txt_winner_.text = "Pink Wins!";
+                txt_winner_rounds_.text = pink_rounds_won.ToString();
+                txt_loser_rounds_.text = purple_rounds_won.ToString();
                 img_winner_.sprite = spr_pink_;
                 img_loser_.sprite = spr_purple_;
                 break;
@@ -57,6 +64,8 @@ public class WinScreen : MonoBehaviour
                 txt_loser_score_.text = pink_score.ToString();
                 txt_loser_score_.color = new Color32(255, 0, 255, 255);
                 txt_winner_.text = "Purple Wins!";
+                txt_winner_rounds_.text = purple_rounds_won.ToString();
+                txt_loser_rounds_.text = pink_rounds_won.ToString();
                 img_winner_.sprite = spr_purple_;
                 img_loser_.sprite = spr_pink_;
                 break;
@@ -64,6 +73,9 @@ public class WinScreen : MonoBehaviour
                 txt_winner_score_.enabled = false;
                 txt_loser_score_.enabled = false;
                 img_winner_.enabled = false;
+                txt_loser_rounds_.enabled = false;
+                txt_winner_rounds_.enabled = false;
+                img_podium_.enabled = false;
                 img_loser_.enabled = false;
                 txt_winner_.text = "Draw!";
                 break;
