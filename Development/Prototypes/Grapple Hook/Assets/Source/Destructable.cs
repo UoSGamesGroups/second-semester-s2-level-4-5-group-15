@@ -5,8 +5,8 @@ public enum Faction { NEUTRAL, PINK, PURPLE };
 
 public class Destructable : MonoBehaviour
 {
-	private readonly Color32 clrPink = new Color32 (255, 0, 0, 255);//new Color32(255, 0, 255, 255);
-	private readonly Color32 clrPurple = new Color32 (0, 0, 255, 255);//new Color32(155, 0, 255, 255);
+	private readonly Color32 clrPink = new Color32 (255, 0, 255, 255);//new Color32(255, 0, 255, 255);
+	private readonly Color32 clrPurple = new Color32 (117, 0, 173, 255);//new Color32(155, 0, 255, 255);
     private readonly Color32 clrNeutral = new Color32(255, 255, 255, 255);
 
     private const int DEFAULT_VALUE = 1000;

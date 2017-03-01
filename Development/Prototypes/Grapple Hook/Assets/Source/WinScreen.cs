@@ -49,9 +49,9 @@ public class WinScreen : MonoBehaviour
         {
             case Faction.PINK:
                 txt_winner_score_.text = pink_score.ToString();
-                txt_winner_score_.color = new Color32(255, 0, 255, 255);
+                //txt_winner_score_.color = new Color32(255, 0, 255, 255);
                 txt_loser_score_.text = purple_score.ToString();
-                txt_loser_score_.color = new Color32(138, 43, 226, 255);
+                //txt_loser_score_.color = new Color32(138, 43, 226, 255);
                 txt_winner_.text = "Pink Wins!";
                 txt_winner_rounds_.text = pink_rounds_won.ToString();
                 txt_loser_rounds_.text = purple_rounds_won.ToString();
@@ -60,9 +60,9 @@ public class WinScreen : MonoBehaviour
                 break;
             case Faction.PURPLE:
                 txt_winner_score_.text = purple_score.ToString();
-                txt_winner_score_.color = new Color32(138, 43, 226, 255);
+                //txt_winner_score_.color = new Color32(138, 43, 226, 255);
                 txt_loser_score_.text = pink_score.ToString();
-                txt_loser_score_.color = new Color32(255, 0, 255, 255);
+                //txt_loser_score_.color = new Color32(255, 0, 255, 255);
                 txt_winner_.text = "Purple Wins!";
                 txt_winner_rounds_.text = purple_rounds_won.ToString();
                 txt_loser_rounds_.text = pink_rounds_won.ToString();
