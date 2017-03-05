@@ -62,7 +62,7 @@ public class RoundEnd : MonoBehaviour
         if (rounds_left > 0)
         {
             game_state_.set_rounds_left(rounds_left);
-            SceneManager.LoadScene("Main Scene", LoadSceneMode.Single);
+            GameObject.Find("Scene Transitioner").GetComponent<SceneTransitioner>().transition_to("Main Scene");
         }
         else
         {
@@ -95,7 +95,7 @@ public class RoundEnd : MonoBehaviour
             }
 
             game_state_.set_winnner(winner);
-            SceneManager.LoadScene("Win Screen", LoadSceneMode.Single);
+            GameObject.Find("Scene Transitioner").GetComponent<SceneTransitioner>().transition_to("Win Screen");
         }
     }
 

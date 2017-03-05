@@ -87,7 +87,7 @@ public class WinScreen : MonoBehaviour
     private IEnumerator TransitionToMenu(float wait_time)
     {
         yield return new WaitForSeconds(wait_time);
-        SceneManager.LoadScene("Main Menu", LoadSceneMode.Single);
+        GameObject.Find("Scene Transitioner").GetComponent<SceneTransitioner>().transition_to("Main Menu");
     }
 
 }

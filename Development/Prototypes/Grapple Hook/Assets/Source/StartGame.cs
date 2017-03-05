@@ -20,7 +20,7 @@ public class StartGame : MonoBehaviour {
         game_state.reset();
         game_state.set_rounds_left(rounds);
 
-        SceneManager.LoadScene("Main Scene", LoadSceneMode.Single);
+        GameObject.Find("Scene Transitioner").GetComponent<SceneTransitioner>().transition_to("Main Scene");
     }
 
 }

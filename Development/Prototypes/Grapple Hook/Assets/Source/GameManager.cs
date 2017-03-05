@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject playerPurple;
 
-    private const int ROUND_LENGTH = 30;
+    private const int ROUND_LENGTH = 5;
 
     private Vector3 pinkSpawn;
     private Vector3 purpleSpawn;
@@ -43,6 +43,8 @@ public class GameManager : MonoBehaviour
     private GameState gameState;
 
     private Timer tmrGameTime;
+
+    private bool transitioning_;
 
     private void Start()
     {
@@ -73,7 +75,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (!tmrGameTime.hasElapsed() && ObjectsAreActive()) return;
+        if (!tmrGameTime.hasElapsed() && ObjectsAreActive() || transitioning_) return;
 
         int pink_score = playerPink.GetComponent<PlayerScore>().getScore();
         int purple_score = playerPurple.GetComponent<PlayerScore>().getScore();
@@ -94,7 +96,8 @@ public class GameManager : MonoBehaviour
             gameState.set_round_winner(Faction.NEUTRAL);
         }
 
-        SceneManager.LoadScene("Round End", LoadSceneMode.Single);     
+        GameObject.Find("Scene Transitioner").GetComponent<SceneTransitioner>().transition_to("Round End");
+        transitioning_ = true;
     }
 
     private void destroyObjects()
