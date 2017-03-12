@@ -118,15 +118,13 @@ public class GameManager : MonoBehaviour
     private void spawnObjects()
     {
         var availableSpawnPoints = new List<Transform>(objSpawnPoints);
-        bool objFaction = false;
         while (availableSpawnPoints.Any())
         {
             var spawnPointIndex = Random.Range(0, availableSpawnPoints.Count);
             var objType = Random.Range(0, destructables.Count);
             var objNew = Instantiate(destructables[objType], availableSpawnPoints[spawnPointIndex].position, Quaternion.identity);
-            objNew.GetComponent<Destructable>().setFaction(objFaction ? Faction.PINK : Faction.PURPLE);
+            objNew.GetComponent<Destructable>().setFaction(Faction.NEUTRAL);
             activeObjects.Add(objNew);
-            objFaction = !objFaction;
             availableSpawnPoints.RemoveAt(spawnPointIndex);
         }
     }
