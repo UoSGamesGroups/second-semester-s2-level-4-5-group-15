@@ -14,6 +14,8 @@ public class SceneTransitioner : MonoBehaviour
     private bool change_scene_;
     private string scene_name_;
 
+    private IEnumerator coroutine;
+
     private Color32 draw_colour_;
 
     private enum FadeDirection { kIn, kOut };
@@ -78,15 +80,18 @@ public class SceneTransitioner : MonoBehaviour
 
         if (fade_in_)
         {
-            StartCoroutine(fade(FadeDirection.kIn));
+            coroutine = fade(FadeDirection.kIn);
+            StartCoroutine(coroutine);
         }
     }
 
     public void transition_to(string scene_name)
     {
+        StopCoroutine(coroutine);
         scene_name_ = scene_name;
         change_scene_ = true;
-        StartCoroutine(fade(FadeDirection.kOut));
+        coroutine = fade(FadeDirection.kOut);
+        StartCoroutine(coroutine);
     }
 
 }
