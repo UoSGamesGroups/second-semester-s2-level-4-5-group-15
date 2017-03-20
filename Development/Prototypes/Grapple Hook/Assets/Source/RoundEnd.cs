@@ -61,16 +61,21 @@ public class RoundEnd : MonoBehaviour
 
         int rounds_left = game_state_.rounds_left() - 1;
 
-        if (rounds_left > 0)
+        int pink_rounds_won = game_state_.pink_rounds_won();
+        int purple_rounds_won = game_state_.purple_rounds_won();
+
+        // 3 : P 2 0
+
+
+        int difference = Math.Abs(pink_rounds_won - purple_rounds_won);
+
+        if (rounds_left > 0 && difference <= rounds_left)
         {
             game_state_.set_rounds_left(rounds_left);
             GameObject.Find("Scene Transitioner").GetComponent<SceneTransitioner>().transition_to("Main Scene");
         }
         else
         {
-            int pink_rounds_won = game_state_.pink_rounds_won();
-            int purple_rounds_won = game_state_.purple_rounds_won();
-
             var winner = Faction.NEUTRAL;
 
             if (pink_rounds_won > purple_rounds_won)
