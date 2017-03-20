@@ -11,6 +11,8 @@ public class Destructable : MonoBehaviour
 
     private const int DEFAULT_VALUE = 1000;
 
+    [SerializeField] private List<AudioSource> sound_effects_;
+
     [SerializeField]
     private int objectValue = DEFAULT_VALUE;
 
@@ -85,6 +87,11 @@ public class Destructable : MonoBehaviour
             }
         }
 
+        for (int i = 0; i < sound_effects_.Count; i++)
+        {
+            sound_effects_[i] = Instantiate(sound_effects_[i]);
+        }
+
         // Flag ourselves as active
         active = true;
     }
@@ -111,6 +118,11 @@ public class Destructable : MonoBehaviour
 
             rb.isKinematic = false;
             addRandomForce(ref rb, minForce, maxForce, ForceMode2D.Impulse);         
+        }
+
+        if (sound_effects_.Count != 0)
+        {
+            sound_effects_[Random.Range(0, sound_effects_.Count)].Play();
         }
 
         destroyed = true;
