@@ -65,7 +65,14 @@ public class GameManager : MonoBehaviour
         txtPurpleScore.text = purpleScoreManager.getScore().ToString();
         txtPurpleMultiplier.text = "x" + purpleScoreManager.getMultiplier();
 
-        txtRoundTime.text = tmrGameTime.getTimeLeft().ToString("00");
+        float time_left = tmrGameTime.getTimeLeft();
+
+        if (time_left < 0)
+        {
+            time_left = 0;
+        }
+        
+        txtRoundTime.text = time_left.ToString("00");
     }
 
     private bool ObjectsAreActive()
