@@ -16,6 +16,8 @@ public class RoundEnd : MonoBehaviour
 
     [SerializeField] private float time_before_next_game_;
 
+    [SerializeField] private AudioSource sound_effect_;
+
     private GameState game_state_;
 
     private void Start()
@@ -101,6 +103,7 @@ public class RoundEnd : MonoBehaviour
 
     private IEnumerator FlipAndChange(Text text, int value)
     {
+        sound_effect_.Play();
         for (var i = 0.0f; Math.Abs(i - 90.0f) > 0.001f; i += flip_smoothness_)
         {
             text.GetComponent<Transform>().localEulerAngles = new Vector3(0.0f, i, 0.0f);
