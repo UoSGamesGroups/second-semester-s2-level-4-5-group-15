@@ -5,6 +5,8 @@ public class StartGame : MonoBehaviour {
 
     public void startGame(int rounds)
     {
+        Destroy(GameObject.Find("Music"));
+
         if (!GameObject.Find("GameState"))
         {
             Debug.Log("Error: Failed to find global state.");
