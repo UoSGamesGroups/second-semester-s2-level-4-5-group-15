@@ -52,7 +52,7 @@ public class WinScreen : MonoBehaviour
                 //txt_winner_score_.color = new Color32(255, 0, 255, 255);
                 txt_loser_score_.text = purple_score.ToString();
                 //txt_loser_score_.color = new Color32(138, 43, 226, 255);
-                txt_winner_.text = "Orange Wins!";
+                txt_winner_.text = "Green Wins!";
                 txt_winner_rounds_.text = pink_rounds_won.ToString();
                 txt_loser_rounds_.text = purple_rounds_won.ToString();
                 img_winner_.sprite = spr_pink_;
