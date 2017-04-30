@@ -55,25 +55,25 @@ public class Destructable : MonoBehaviour
 
     public void setFaction(Faction faction)
     {
-        var colour = clrNeutral;
-        switch (faction) {
-            case Faction.PINK:
-                this.faction = Faction.PINK;
-                colour = clrPink;
-                break;
-            case Faction.PURPLE:
-                this.faction = Faction.PURPLE;
-                colour = clrPurple;
-                break;
-        }
-        foreach (var child in getChildren())
-        {
-            // Set all child SpriteRenderer's colour to our Faction's colour
-            if (child.GetComponent<SpriteRenderer>() != null)
-            {
-                child.GetComponent<SpriteRenderer>().color = colour;
-            }
-        }
+        //var colour = clrNeutral;
+        //switch (faction) {
+        //    case Faction.PINK:
+        //        this.faction = Faction.PINK;
+        //        colour = clrPink;
+        //        break;
+        //    case Faction.PURPLE:
+        //        this.faction = Faction.PURPLE;
+        //        colour = clrPurple;
+        //        break;
+        //}
+        //foreach (var child in getChildren())
+        //{
+        //    // Set all child SpriteRenderer's colour to our Faction's colour
+        //    if (child.GetComponent<SpriteRenderer>() != null)
+        //    {
+        //        child.GetComponent<SpriteRenderer>().color = colour;
+        //    }
+        //}
     }
 
     private void Start()
